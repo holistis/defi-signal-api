@@ -24,8 +24,12 @@ Pay per call in USDC on Base. No signup. No API key. No dashboard.
 | `GET /api/health` | Live PM2 status of all 50+ bots on VPS | $0.002 |
 | `GET /api/murshid` | Nightly DeFi strategy report | $0.010 |
 | `GET /api/edge` | Strategy verdicts with expected vs actual returns | $0.008 |
+| `POST /api/bug-intel` | AI security scan of a public smart contract repo, report within 24h (Al-Mizaan v3) | $5.00 |
+| `GET /api/bug-intel/:jobId` | Poll status / fetch report for a submitted scan | Free |
 
 Base URL: `http://138.201.204.97:3748`
+
+Card / iDEAL payment also available for `/api/bug-intel` via Stripe: see the pricing table on [api.mergefix.com](https://api.mergefix.com).
 
 ## How payment works (x402)
 
