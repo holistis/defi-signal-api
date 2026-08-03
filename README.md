@@ -51,7 +51,7 @@ const res = await fetch('http://138.201.204.97:3748/api/pt-next', {
   headers: { 'PAYMENT-SIGNATURE': txHash }
 });
 const draws = await res.json();
-// { base: { nextDrawAt: 1721390400000, timeUntilMs: 3600000, tierPrizesEth: [...] }, ... }
+// { base: { drawId: 412, nextDrawAt: "2026-08-03T18:00:00.000Z", timeUntilMs: 3600000, periodH: 24 }, ... }
 ```
 
 ## Who this is for
