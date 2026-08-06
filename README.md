@@ -25,10 +25,20 @@ Pay per call in USDC on Base. No signup. No API key. No dashboard.
 | `GET /api/murshid` | Nightly DeFi strategy report | $0.010 |
 | `GET /api/edge` | Strategy verdicts with expected vs actual returns | $0.008 |
 | `GET /api/rpc-status` | Live RPC-provider health per chain (getLogs caps, rate-limits, liveness latency) | First 20 calls/day per IP free, then $0.002 |
+| `GET /api/liquidation-watch` | Live multi-chain liquidation risk — Morpho Blue + Aave V3 + Compound V3 on Ethereum/Avalanche/Polygon, top at-risk accounts by health factor, no cache | $0.002 |
+| `GET /api/morpho-borrowers` | Morpho Blue (Base) — active borrowers per market | $0.010 |
+| `GET /api/aave-health` | Aave V3 (Base + Arbitrum) — near-liquidation positions, last 48h | $0.008 |
+| `GET /api/compound-borrowers` | Compound V3 (Ethereum/Base/Arb/Polygon) — active borrowers per market | $0.010 |
+| `GET /api/compound-health` | Compound V3 — live scan telemetry: liquidation signal + bot status, last 6h | $0.008 |
+| `GET /api/jup-lend` | Jupiter Lending (Solana) — live scan telemetry: liquidation signal + RPC health | $0.008 |
+| `GET /api/vuln-search` | 3ilm smart-contract vulnerability pattern search (1,032 exact-reconciled findings, 10 Sherlock contests) | $0.005 |
+| `GET /api/audit-signals` | Audit priority signals — Cantina + Sherlock contests/bounties enriched with our own audit-density/ratio/priority-score analysis, refreshed 2x/day. Never HackenProof/Immunefi/CodeHawks. | $0.010 |
 | `POST /api/bug-intel` | AI security scan of a public smart contract repo, report within 24h (Al-Mizaan v3) | $5.00 |
 | `GET /api/bug-intel/:jobId` | Poll status / fetch report for a submitted scan | Free |
 
-Base URL: `http://138.201.204.97:3748`
+Two of the JSON endpoints above also have a free, human-readable HTML twin fed by the same live telemetry — no payment, no auth: [`/rpc-status`](https://api.mergefix.com/rpc-status) and [`/liquidation-watch`](https://api.mergefix.com/liquidation-watch).
+
+Base URL: `https://api.mergefix.com` (also reachable at `http://138.201.204.97:3748` directly)
 
 Card / iDEAL payment also available for `/api/bug-intel` via Stripe: see the pricing table on [api.mergefix.com](https://api.mergefix.com).
 
@@ -41,14 +51,14 @@ Card / iDEAL payment also available for `/api/bug-intel` via Stripe: see the pri
 
 ```javascript
 // Example: get next PoolTogether draw timing
-const statusRes = await fetch('http://138.201.204.97:3748/api/status');
+const statusRes = await fetch('https://api.mergefix.com/api/status');
 const { wallet, endpoints } = await statusRes.json();
 
 // Send USDC to wallet on Base (use your preferred method)
 const txHash = await sendUSDC(wallet, 0.001); // $0.001
 
 // Call the endpoint with payment proof
-const res = await fetch('http://138.201.204.97:3748/api/pt-next', {
+const res = await fetch('https://api.mergefix.com/api/pt-next', {
   headers: { 'PAYMENT-SIGNATURE': txHash }
 });
 const draws = await res.json();
@@ -68,7 +78,7 @@ It does not execute transactions. It does not give trading advice. It is a data 
 
 ## OpenAPI spec
 
-Available at: `http://138.201.204.97:3748/openapi.json`
+Available at: `https://api.mergefix.com/openapi.json`
 
 ---
 
