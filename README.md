@@ -52,10 +52,10 @@ Card / iDEAL payment also available for `/api/bug-intel` via Stripe: see the pri
 ```javascript
 // Example: get next PoolTogether draw timing
 const statusRes = await fetch('https://api.mergefix.com/api/status');
-const { wallet, endpoints } = await statusRes.json();
+const { payment, endpoints } = await statusRes.json();
 
 // Send USDC to wallet on Base (use your preferred method)
-const txHash = await sendUSDC(wallet, 0.001); // $0.001
+const txHash = await sendUSDC(payment.wallet, 0.001); // $0.001
 
 // Call the endpoint with payment proof
 const res = await fetch('https://api.mergefix.com/api/pt-next', {
