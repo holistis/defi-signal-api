@@ -80,6 +80,14 @@ It does not execute transactions. It does not give trading advice. It is a data 
 
 Available at: `https://api.mergefix.com/openapi.json`
 
+## Related
+
+The `/api/vuln-search` and `/api/bug-intel` routes on this API share their dataset and Al-Mizaan 7-gate logic with two purpose-built MCP servers, for anyone who'd rather call them as MCP tools than raw HTTP:
+
+- **[bug-bounty-intelligence-mcp](https://github.com/holistis/bug-bounty-intelligence-mcp)** — same lookup plus a paid full-repo `scan_contract` scan
+- **[3ilm-mcp](https://github.com/holistis/3ilm-mcp)** — free-only pattern search, MCP-native
+- **[al-mizaan-judge](https://github.com/holistis/al-mizaan-judge)** — local CLI that runs a candidate bug-bounty finding through the same 7 gates before you submit it
+
 ---
 
 Built and maintained by [@holistis](https://github.com/holistis)
