@@ -17,7 +17,7 @@ Pay per call in USDC on Base. No signup. No API key. No dashboard.
 | Endpoint | What it returns | Price |
 |----------|----------------|-------|
 | `GET /api/status` | All endpoints, prices, payment wallet | Free |
-| `GET /api/pt-next` | PoolTogether next draw timing on Base/Arb/OP/Scroll | $0.001 |
+| `GET /api/pt-next` | PoolTogether next draw timing on Base/Arb/OP/Scroll | $0.005 |
 | `GET /api/pt` | PT draw scans and recent claim results | $0.001 |
 | `GET /api/signals` | SOL arb near-win signals (last 2 hours) | $0.002 |
 | `GET /api/earnings` | Bot earnings today across all chains | $0.003 |
