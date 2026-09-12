@@ -1,12 +1,12 @@
 /**
  * DeFi Signal API — quick start example
- * Base URL: http://138.201.204.97:3748
+ * Base URL: https://api.mergefix.com (also reachable at http://138.201.204.97:3748 directly)
  *
- * Payment: send USDC on Base to the wallet from /api/status
+ * Payment: send USDC on Base to the wallet from /api/status (status.payment.wallet)
  * Include the tx hash as PAYMENT-SIGNATURE header
  */
 
-const BASE = 'http://138.201.204.97:3748';
+const BASE = 'https://api.mergefix.com';
 
 // Step 1: free — check available endpoints and payment wallet
 async function getStatus() {
@@ -30,7 +30,7 @@ async function callEndpoint(path, txHash) {
 // Examples
 async function main() {
   const status = await getStatus();
-  console.log('Payment wallet:', status.wallet);
+  console.log('Payment wallet:', status.payment.wallet);
   console.log('Available endpoints:', status.endpoints);
 
   // After sending USDC on Base:
