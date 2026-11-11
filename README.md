@@ -67,7 +67,6 @@ const draws = await res.json();
 
 ## Who this is for
 
-- **PoolTogether bot builders** — time your claim transactions precisely with `/api/pt-next`
 - **Solana arb researchers** — study near-miss patterns from `/api/signals` to calibrate your own bot
 - **DeFi infrastructure monitors** — track bot fleet health via `/api/health`
 - **Strategy researchers** — get real expected vs actual returns from `/api/edge`
